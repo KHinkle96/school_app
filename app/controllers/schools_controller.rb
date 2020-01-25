@@ -14,9 +14,9 @@ class SchoolsController < ApplicationController
   end
 
   def create
-    @school = School.new(params)
+    @school = School.new(school_params)
     if @school.save
-      redirect_to(school_path(@school), notice: "School added")
+      redirect_to(schools_path(@school), notice: "School added")
     else
       flash.now.alert = "Error saving school"
       render(:new)
@@ -24,11 +24,13 @@ class SchoolsController < ApplicationController
   end
 
   def edit
+    @school = School.find(params[:id])
   end
 
   def update
-    if @school.update(params)
-      redirect_to(school_path(@school), notice: "School updated")
+    @school = School.find(params[:id])
+    if @school.update(school_params)
+      redirect_to(schools_path(@school), notice: "School updated")
     else
       flash.now.alert = "Error saving school"
       render(:edit)
@@ -36,6 +38,7 @@ class SchoolsController < ApplicationController
   end
 
   def destroy
+    @school = School.find(params[:id])
     @school.destroy
     redirect_to(schools_path, notice: "School deleted")
   end
