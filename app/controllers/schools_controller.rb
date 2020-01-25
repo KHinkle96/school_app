@@ -3,7 +3,7 @@ class SchoolsController < ApplicationController
   #before_action :load_school, only: %i(show edit update destroy)
 
   def index
-    @schools = School.first
+    @schools = School.all
   end
 
   def show
