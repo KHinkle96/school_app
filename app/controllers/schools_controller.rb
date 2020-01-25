@@ -1,4 +1,4 @@
-class SchoolsContorller < ApplicationController
+class SchoolsController < ApplicationController
   # TODO: add this back in later when things are working again
   #before_action :load_school, only: %i(show edit update destroy)
 
